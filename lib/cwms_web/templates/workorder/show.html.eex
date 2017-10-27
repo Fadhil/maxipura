@@ -1,0 +1,38 @@
+<h2>Show Workorder</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @workorder.title %>
+  </li>
+
+  <li>
+    <strong>Details:</strong>
+    <%= @workorder.details %>
+  </li>
+
+  <li>
+    <strong>Cost:</strong>
+    <%= @workorder.cost %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @workorder.date_start %>
+  </li>
+
+  <li>
+    <strong>Duration:</strong>
+    <%= @workorder.duration %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @workorder.status %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: workorder_path(@conn, :edit, @workorder) %></span>
+<span><%= link "Back", to: workorder_path(@conn, :index) %></span>

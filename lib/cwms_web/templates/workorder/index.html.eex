@@ -1,0 +1,36 @@
+<h2>Listing Workorders</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Details</th>
+      <th>Cost</th>
+      <th>Date</th>
+      <th>Duration</th>
+      <th>Status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for workorder <- @workorders do %>
+    <tr>
+      <td><%= workorder.title %></td>
+      <td><%= workorder.details %></td>
+      <td><%= workorder.cost %></td>
+      <td><%= workorder.date_start %></td>
+      <td><%= workorder.duration %></td>
+      <td><%= workorder.status %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: workorder_path(@conn, :show, workorder), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: workorder_path(@conn, :edit, workorder), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: workorder_path(@conn, :delete, workorder), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Workorder", to: workorder_path(@conn, :new) %></span>

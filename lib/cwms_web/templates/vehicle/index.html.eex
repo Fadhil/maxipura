@@ -1,0 +1,34 @@
+<h2>Listing Vehicles</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>No plate</th>
+      <th>Type</th>
+      <th>Model</th>
+      <th>Color</th>
+      <th>Issue</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for vehicle <- @vehicles do %>
+    <tr>
+      <td><%= vehicle.no_plate %></td>
+      <td><%= vehicle.type %></td>
+      <td><%= vehicle.model %></td>
+      <td><%= vehicle.color %></td>
+      <td><%= vehicle.issue %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: vehicle_path(@conn, :show, vehicle), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: vehicle_path(@conn, :edit, vehicle), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: vehicle_path(@conn, :delete, vehicle), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Vehicle", to: vehicle_path(@conn, :new) %></span>

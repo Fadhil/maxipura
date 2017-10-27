@@ -1,0 +1,5 @@
+<h2>Edit Workorder</h2>
+
+<%= render "form.html", Map.put(assigns, :action, workorder_path(@conn, :update, @workorder)) %>
+
+<span><%= link "Back", to: workorder_path(@conn, :index) %></span>

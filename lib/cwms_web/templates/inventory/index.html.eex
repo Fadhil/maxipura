@@ -1,0 +1,30 @@
+<h2>Listing Inventories</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity in stock</th>
+      <th>Price per unit</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for inventory <- @inventories do %>
+    <tr>
+      <td><%= inventory.name %></td>
+      <td><%= inventory.quantity_stock %></td>
+      <td><%= inventory.price %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: inventory_path(@conn, :show, inventory), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: inventory_path(@conn, :edit, inventory), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: inventory_path(@conn, :delete, inventory), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Inventory", to: inventory_path(@conn, :new) %></span>

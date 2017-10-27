@@ -1,0 +1,30 @@
+<h2>Show Vehicle</h2>
+
+<ul>
+  
+  <li>
+    <strong>no plate:</strong>
+    <%= @vehicle.no_plate %>
+  </li>
+
+  <li>
+    <strong>Vehicle Type:</strong>
+    <%= @vehicle.type %>
+  </li>
+  <li>
+    <strong> Vehicle model:</strong>
+    <%= @vehicle.model %>
+  </li>
+  <li>
+    <strong> Vehicle color:</strong>
+    <%= @vehicle.color %>
+  </li>
+  <li>
+    <strong>Issue:</strong>
+    <%= @vehicle.issue %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: vehicle_path(@conn, :edit, @vehicle) %></span>
+<span><%= link "Back", to: vehicle_path(@conn, :index) %></span>
