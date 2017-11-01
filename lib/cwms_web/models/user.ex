@@ -3,10 +3,10 @@ defmodule Cwms.User do
 
   schema "users" do
     field :name, :string
-    field :username, :string
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    has_one :profiles, Cwms.Profile
     # has_many :vehicles, Cwms.Vehicle
 
     timestamps()
@@ -14,9 +14,9 @@ defmodule Cwms.User do
 
   def changeset(model, params \\ %{}) do
     model
-    |> cast(params, ~w(name username), [])
-    |> validate_length(:username, min: 3, max: 20)
-    |> unique_constraint(:username)
+    |> cast(params, ~w(name email), [])
+    |> validate_length(:email, min: 3, max: 100)
+    |> unique_constraint(:email)
   end
 
   def registration_changeset(model, params) do

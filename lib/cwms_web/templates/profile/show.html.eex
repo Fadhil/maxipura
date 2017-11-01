@@ -1,0 +1,28 @@
+<h2>Show Profile</h2>
+
+<ul>
+
+  <li>
+    <strong>Fullname:</strong>
+    <%= @profile.fullname %>
+  </li>
+
+  <li>
+    <strong>Icno:</strong>
+    <%= @profile.icno %>
+  </li>
+
+  <li>
+    <strong>Phone:</strong>
+    <%= @profile.phone %>
+  </li>
+
+  <li>
+    <strong>Address:</strong>
+    <%= @profile.address %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: profile_path(@conn, :edit, @profile) %></span>
+<span><%= link "Back", to: profile_path(@conn, :index) %></span>

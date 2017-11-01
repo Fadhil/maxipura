@@ -25,9 +25,9 @@ defmodule Cwms.Auth do
     configure_session(conn, drop: true)
   end
 
-  def login_by_username_and_pass(conn, username, given_pass, opts) do
+  def login_by_email_and_pass(conn, email, given_pass, opts) do
     repo = Keyword.fetch!(opts, :repo)
-    user = repo.get_by(Cwms.User, username: username)
+    user = repo.get_by(Cwms.User, email: email)
     cond do
       user && checkpw(given_pass, user.password_hash) ->
         {:ok, login(conn, user)}
