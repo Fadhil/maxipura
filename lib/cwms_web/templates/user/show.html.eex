@@ -3,10 +3,9 @@
 <ul>
 
   <li>
-    <strong>name:</strong>
+    <strong>Name:</strong>
     <%= @user.name %>
   </li>
-
   <li>
     <strong>Email:</strong>
     <%= @user.email %>

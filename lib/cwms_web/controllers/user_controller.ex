@@ -1,8 +1,20 @@
 defmodule CwmsWeb.UserController do
   use CwmsWeb, :controller
-  plug :authenticate_user when action in [:index, :show]
   alias Cwms.Repo
   alias Cwms.User
+  alias Cwms.Role
+
+  plug :authenticate_user when action in [:index, :show]
+  plug :load_roles when action in [:new, :create]
+
+  defp load_roles(conn, _) do
+    query =
+      Role
+      |> Role.alphabetical
+      |> Role.names_and_ids
+    roles = Repo.all query
+    assign(conn, :roles, roles)
+  end
 
   def index(conn, _params) do
       users = Repo.all(Cwms.User)
@@ -31,6 +43,7 @@ defmodule CwmsWeb.UserController do
       render(conn, "new.html", changeset: changeset)
     end
   end
+
 
   # defp authenticate(conn, _opts) do
   #   if conn.assigns.current_user do

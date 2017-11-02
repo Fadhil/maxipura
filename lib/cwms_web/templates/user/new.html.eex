@@ -16,6 +16,10 @@
     <%= error_tag f, :email %>
   </div>
   <div class ="form-group">
+    <%= select f, :role_id, @roles, class: "form-control", prompt: "Choose Role" %>
+    <%= error_tag f, :role_id %>
+  </div>
+  <div class ="form-group">
     <%= password_input f, :password, placeholder: "Password", class: "form-control" %>
     <%= error_tag f, :password %>
   </div>

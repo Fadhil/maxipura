@@ -6,11 +6,15 @@ defmodule Cwms.User do
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
-    has_one :profiles, Cwms.Profile
+    has_one :profiles, Cwms.Accounts.Profile
     # has_many :vehicles, Cwms.Vehicle
+    belongs_to :role, Cwms.Roles
 
     timestamps()
   end
+  
+  @required_fields ~w(name email password)
+  @optional_fields ~w(role_id)
 
   def changeset(model, params \\ %{}) do
     model
