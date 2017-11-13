@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-4">
-    <h2>Listing Products</h2>
+    <h2>Inventory Listing</h2>
   </div>
   <div class="col-md-8">
     <span><%= link "New Purchase", to: purchase_path(@conn, :new), class: "btn btn-primary btn-xs pull-right" %></span>
