@@ -1,5 +1,0 @@
-<h2>New Inventory</h2>
-
-<%= render "form.html", Map.put(assigns, :action, inventory_path(@conn, :create)) %>
-
-<span><%= link "Back", to: inventory_path(@conn, :index) %></span>
