@@ -5,7 +5,7 @@ defmodule Cwms.Accounts do
 
   import Ecto.Query, warn: false
   alias Cwms.Repo
-
+  alias Cwms.User
   alias Cwms.Accounts.Profile
 
   @doc """
@@ -100,5 +100,20 @@ defmodule Cwms.Accounts do
   """
   def change_profile(%Profile{} = profile) do
     Profile.changeset(profile, %{})
+  end
+
+
+  @doc """
+  Creates a User.
+
+  ## Examples
+
+      iex> create_user(user, %{name: "User1", email: "user@email.com", password: "password"})
+      {:ok, %User{}}
+
+  """
+  def create_user(attrs \\ %{}) do
+    User.changeset(%User{}, attrs)
+    |> Repo.insert
   end
 end

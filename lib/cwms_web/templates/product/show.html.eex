@@ -1,0 +1,33 @@
+<h2>Show Product</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @product.name %>
+  </li>
+
+  <li>
+    <strong>Model:</strong>
+    <%= @product.model_id %>
+  </li>
+
+  <li>
+    <strong>Quantity:</strong>
+    <%= @product.quantity %>
+  </li>
+
+  <li>
+    <strong>Unit price:</strong>
+    <%= @product.unit_price %>
+  </li>
+
+  <li>
+    <strong>Unit price cents:</strong>
+    <%= @product.unit_price_cents %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: product_path(@conn, :edit, @product) %></span>
+<span><%= link "Back", to: product_path(@conn, :index) %></span>

@@ -27,8 +27,8 @@ defmodule CwmsWeb.Router do
     pipe_through [:browser, :authenticate_user]
     resources "/vehicles", VehicleController
     resources "/workorders", WorkorderController
-    resources "/inventories", InventoryController
     resources "/profiles", ProfileController
+    resources "/inventory", ProductController
   end
 
   # Other scopes may use custom stacks.
