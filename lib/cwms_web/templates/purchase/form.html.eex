@@ -1,0 +1,52 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group inline">
+        <div class="col-xs-2">
+          <%= label f, :name, class: "control-label" %>
+        </div>
+        <div class="col-xs-10">
+          <%= text_input :requester, :name, class: "form-control", disabled: true, value: @conn.assigns.current_user.name %>
+          <%= hidden_input f, :requester_id, value: @conn.assigns.current_user.id %>
+          <%= error_tag f, :requester %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= label f, :person_in_charge, class: "control-label" %>
+        <%= select f, :pic_id, inventory_managers_list, class: "form-control" %>
+        <%= error_tag f, :person_in_charge %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group inline">
+        <div class="col-xs-2">
+          <%= label f, :address, class: "control-label" %>
+        </div>
+        <div class="col-xs-10">
+          <%= text_input f, :address, class: "form-control" %>
+          <%= error_tag f, :address %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= label f, :phone, class: "control-label" %>
+        <%= text_input f, :phone, class: "form-control" %>
+        <%= error_tag f, :phone %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

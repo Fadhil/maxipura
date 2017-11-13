@@ -70,4 +70,68 @@ defmodule Cwms.InventoryTest do
       assert %Ecto.Changeset{} = Inventory.change_product(product)
     end
   end
+
+  describe "purchases" do
+    alias Cwms.Inventory.Purchase
+
+    @valid_attrs %{address: "some address", person_in_charge: "some person_in_charge", phone: "some phone"}
+    @update_attrs %{address: "some updated address", person_in_charge: "some updated person_in_charge", phone: "some updated phone"}
+    @invalid_attrs %{address: nil, person_in_charge: nil, phone: nil}
+
+    def purchase_fixture(attrs \\ %{}) do
+      {:ok, purchase} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Inventory.create_purchase()
+
+      purchase
+    end
+
+    test "list_purchases/0 returns all purchases" do
+      purchase = purchase_fixture()
+      assert Inventory.list_purchases() == [purchase]
+    end
+
+    test "get_purchase!/1 returns the purchase with given id" do
+      purchase = purchase_fixture()
+      assert Inventory.get_purchase!(purchase.id) == purchase
+    end
+
+    test "create_purchase/1 with valid data creates a purchase" do
+      assert {:ok, %Purchase{} = purchase} = Inventory.create_purchase(@valid_attrs)
+      assert purchase.address == "some address"
+      assert purchase.person_in_charge == "some person_in_charge"
+      assert purchase.phone == "some phone"
+    end
+
+    test "create_purchase/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Inventory.create_purchase(@invalid_attrs)
+    end
+
+    test "update_purchase/2 with valid data updates the purchase" do
+      purchase = purchase_fixture()
+      assert {:ok, purchase} = Inventory.update_purchase(purchase, @update_attrs)
+      assert %Purchase{} = purchase
+      assert purchase.address == "some updated address"
+      assert purchase.person_in_charge == "some updated person_in_charge"
+      assert purchase.phone == "some updated phone"
+    end
+
+    test "update_purchase/2 with invalid data returns error changeset" do
+      purchase = purchase_fixture()
+      assert {:error, %Ecto.Changeset{}} = Inventory.update_purchase(purchase, @invalid_attrs)
+      assert purchase == Inventory.get_purchase!(purchase.id)
+    end
+
+    test "delete_purchase/1 deletes the purchase" do
+      purchase = purchase_fixture()
+      assert {:ok, %Purchase{}} = Inventory.delete_purchase(purchase)
+      assert_raise Ecto.NoResultsError, fn -> Inventory.get_purchase!(purchase.id) end
+    end
+
+    test "change_purchase/1 returns a purchase changeset" do
+      purchase = purchase_fixture()
+      assert %Ecto.Changeset{} = Inventory.change_purchase(purchase)
+    end
+  end
 end

@@ -1,0 +1,5 @@
+<h2>Edit Purchase</h2>
+
+<%= render "form.html", Map.put(assigns, :action, purchase_path(@conn, :update, @purchase)) %>
+
+<span><%= link "Back", to: purchase_path(@conn, :index) %></span>

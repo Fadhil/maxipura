@@ -29,6 +29,7 @@ defmodule CwmsWeb.Router do
     resources "/workorders", WorkorderController
     resources "/profiles", ProfileController
     resources "/inventory", ProductController
+    resources "/purchases", PurchaseController
   end
 
   # Other scopes may use custom stacks.

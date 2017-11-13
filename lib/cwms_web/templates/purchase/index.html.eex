@@ -1,0 +1,30 @@
+<h2>Listing Purchases</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Person in charge</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for purchase <- @purchases do %>
+    <tr>
+      <td><%= purchase.address %></td>
+      <td><%= purchase.phone %></td>
+      <td><%= purchase.person_in_charge %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: purchase_path(@conn, :show, purchase), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: purchase_path(@conn, :edit, purchase), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: purchase_path(@conn, :delete, purchase), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Purchase", to: purchase_path(@conn, :new) %></span>
