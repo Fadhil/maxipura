@@ -55,7 +55,7 @@
           <%= error_tag p, :model_id %>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="form-group">
           <%= label p, :description, class: "control-label capitalize" %>
           <%= text_input p, :description, class: "form-control" %>
@@ -74,6 +74,13 @@
           <%= label p, "Quantity", class: "control-label capitalize" %>
           <%= text_input p, :quantity_requested, class: "form-control" %>
           <%= error_tag p, :quantity_requested %>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <div class="form-group">
+          <%= label p, "Unit", class: "control-label capitalize" %>
+          <%= text_input p, :quantity_unit, class: "form-control" %>
+          <%= error_tag p, :quantity_unit %>
         </div>
       </div>
       </div>

@@ -12,7 +12,7 @@ defmodule CwmsWeb.PurchaseController do
 
   def new(conn, _params) do
     changeset = Inventory.change_purchase(%Purchase{items: [
-        %Item{}
+        %Item{}, %Item{},%Item{},%Item{},%Item{}
       ]})
     render(conn, "new.html", changeset: changeset)
   end
@@ -35,7 +35,7 @@ defmodule CwmsWeb.PurchaseController do
   end
 
   def edit(conn, %{"id" => id}) do
-    purchase = Inventory.get_purchase!(id)
+    purchase = Inventory.get_purchase!(id) |> Repo.preload([:person_in_charge, :requester, :items])
     changeset = Inventory.change_purchase(purchase)
     render(conn, "edit.html", purchase: purchase, changeset: changeset)
   end
