@@ -8,6 +8,8 @@ defmodule Cwms.Repo.Migrations.CreateItems do
       add :quantity_units, :string
       add :unit_price_cents, :integer
       add :description, :string
+
+      timestamps
     end
   end
 end

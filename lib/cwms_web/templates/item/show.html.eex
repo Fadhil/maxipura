@@ -1,0 +1,33 @@
+<h2>Show Item</h2>
+
+<ul>
+
+  <li>
+    <strong>Model:</strong>
+    <%= @item.model_id %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @item.description %>
+  </li>
+
+  <li>
+    <strong>Unit price:</strong>
+    <%= @item.unit_price %>
+  </li>
+
+  <li>
+    <strong>Quantity requested:</strong>
+    <%= @item.quantity_requested %>
+  </li>
+
+  <li>
+    <strong>Quantity units:</strong>
+    <%= @item.quantity_units %>
+  </li>
+
+</ul>
+
+<span><%=# link "Edit", to: item_path(@conn, :edit, @item) %></span>
+<span><%=# link "Back", to: item_path(@conn, :index) %></span>
