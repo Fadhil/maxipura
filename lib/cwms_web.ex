@@ -48,6 +48,7 @@ defmodule CwmsWeb do
 
       import CwmsWeb.Router.Helpers
       import CwmsWeb.ErrorHelpers
+      import CwmsWeb.InputHelpers
       import CwmsWeb.Gettext
     end
   end
