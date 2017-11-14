@@ -22,7 +22,6 @@ defmodule Cwms.Inventory.Item do
   def changeset(%Item{} = item, attrs) do
     item
     |> cast(attrs, [:model_id, :description, :unit_price, :quantity_requested, :quantity_units])
-    |> validate_required([:model_id, :description, :unit_price, :quantity_requested])
     |> save_unit_price_in_cents
   end
 end

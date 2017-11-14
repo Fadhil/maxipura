@@ -65,7 +65,7 @@
       <div class="col-md-2">
         <div class="form-group">
           <%= label p, :unit_price, class: "control-label capitalize" %>
-          <%= text_input p, :unit_price, class: "form-control" %>
+          <%= text_input p, :unit_price, class: "form-control", value: display_dollar_price(p.data.unit_price_cents) %>
           <%= error_tag p, :unit_price %>
         </div>
       </div>

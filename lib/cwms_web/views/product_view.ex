@@ -5,4 +5,7 @@ defmodule CwmsWeb.ProductView do
     price_in_cents/100
     |> Float.to_string(decimals: 2)
   end
+  def display_dollar_price(_) do
+    0.00 
+  end
 end
