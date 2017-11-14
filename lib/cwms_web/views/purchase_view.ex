@@ -7,4 +7,24 @@ defmodule CwmsWeb.PurchaseView do
   def inventory_managers_list do
     Repo.all(User) |> Enum.map(&({&1.name, &1.id}))
   end
+
+  def new_status(status) do
+    case status do
+      "new" ->
+        "verified"
+      "verified" ->
+        "complete"
+      "complete" ->
+        nil
+    end
+  end
+
+  def update_status_button_name(status) do
+    case status do
+      "new" ->
+        "Verify"
+      "verified" ->
+        "Complete"
+    end
+  end
 end

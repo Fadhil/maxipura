@@ -30,7 +30,7 @@ defmodule CwmsWeb.PurchaseController do
 
   def show(conn, %{"id" => id}) do
     purchase = Inventory.get_purchase!(id)
-      |> Repo.preload([:requester, :person_in_charge])
+      |> Repo.preload([:requester, :person_in_charge, :items])
     render(conn, "show.html", purchase: purchase)
   end
 
@@ -50,6 +50,32 @@ defmodule CwmsWeb.PurchaseController do
         |> redirect(to: purchase_path(conn, :show, purchase))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", purchase: purchase, changeset: changeset)
+    end
+  end
+
+  def update(conn, %{"id" => id, "status" => status}) do
+    purchase = Inventory.get_purchase!(id) |> Repo.preload([:person_in_charge, :requester, :items])
+    case status do
+      "verified" ->
+         update_status(conn, purchase, "verified")
+      "completed" ->
+         update_status(conn, purchase, "completed")
+      _ ->
+        conn
+        |> put_flash(:info, "Purchase updated successfully.")
+        |> redirect(to: purchase_path(conn, :show, purchase))
+    end
+  end
+
+  def update_status(conn, purchase, status) do
+    case Inventory.update_purchase(purchase, %{status: status}) do
+      {:ok, purchase} ->
+        purchase |> Repo.preload([:person_in_charge, :requester, :items])
+        conn
+        |> put_flash(:info, "Purchase updated successfully.")
+        |> redirect(to: purchase_path(conn, :show, purchase))
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "show.html", purchase: purchase)
     end
   end
 

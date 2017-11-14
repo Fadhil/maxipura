@@ -23,7 +23,7 @@ defmodule Cwms.Inventory.Purchase do
   def changeset(%Purchase{} = purchase, attrs) do
     purchase
     |> Repo.preload([:person_in_charge, :requester])
-    |> cast(attrs, [:address, :phone, :pic_id, :requester_id])
+    |> cast(attrs, [:address, :phone, :pic_id, :requester_id, :status])
     |> validate_required([:address, :phone])
     |> cast_assoc(:person_in_charge)
     |> cast_assoc(:requester)
