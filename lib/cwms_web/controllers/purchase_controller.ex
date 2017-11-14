@@ -6,7 +6,7 @@ defmodule CwmsWeb.PurchaseController do
   alias Cwms.Repo
 
   def index(conn, _params) do
-    purchases = Inventory.list_purchases()
+    purchases = Inventory.list_purchases() |> Repo.preload([:person_in_charge, :requester])
     render(conn, "index.html", purchases: purchases)
   end
 

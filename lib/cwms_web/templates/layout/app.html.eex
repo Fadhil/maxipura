@@ -49,7 +49,7 @@
                     <%= link "Inventory", to: product_path(@conn, :index) %>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
+                    <%= link "Purchases", to: purchase_path(@conn, :index) %>
                 </li>
                 <li>
                     <a href="#">Overview</a>
