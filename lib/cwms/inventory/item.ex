@@ -13,6 +13,8 @@ defmodule Cwms.Inventory.Item do
     field :unit_price, :float, virtual: true
     field :unit_price_cents, :integer
 
+    belongs_to :purchase, Cwms.Inventory.Purchase
+
     timestamps()
   end
 
@@ -20,7 +22,7 @@ defmodule Cwms.Inventory.Item do
   def changeset(%Item{} = item, attrs) do
     item
     |> cast(attrs, [:model_id, :description, :unit_price, :quantity_requested, :quantity_units])
-    |> validate_required([:model_id, :description, :unit_price, :quantity_requested, :quantity_units])
+    |> validate_required([:model_id, :description, :unit_price, :quantity_requested])
     |> save_unit_price_in_cents
   end
 end

@@ -14,6 +14,8 @@ defmodule Cwms.Inventory.Purchase do
     belongs_to :person_in_charge, Cwms.User, foreign_key: :pic_id
     belongs_to :requester, Cwms.User
 
+    has_many :items, Cwms.Inventory.Item, on_delete: :delete_all
+
     timestamps()
   end
 
@@ -25,6 +27,7 @@ defmodule Cwms.Inventory.Purchase do
     |> validate_required([:address, :phone])
     |> cast_assoc(:person_in_charge)
     |> cast_assoc(:requester)
+    |> cast_assoc(:items, required: true)
   end
 
   def new_changeset(%Purchase{} = purchase, attrs) do

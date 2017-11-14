@@ -2,7 +2,7 @@ defmodule CwmsWeb.PurchaseController do
   use CwmsWeb, :controller
 
   alias Cwms.Inventory
-  alias Cwms.Inventory.Purchase
+  alias Cwms.Inventory.{Purchase, Item}
   alias Cwms.Repo
 
   def index(conn, _params) do
@@ -11,7 +11,9 @@ defmodule CwmsWeb.PurchaseController do
   end
 
   def new(conn, _params) do
-    changeset = Inventory.change_purchase(%Purchase{})
+    changeset = Inventory.change_purchase(%Purchase{items: [
+        %Item{}
+      ]})
     render(conn, "new.html", changeset: changeset)
   end
 

@@ -17,7 +17,7 @@
     <tr>
       <td><%= item.model_id %></td>
       <td><%= item.description %></td>
-      <td><%= item.unit_price %></td>
+      <td><%= display_dollar_price(item.unit_price_cents) %></td>
       <td><%= item.quantity_requested %></td>
       <td><%= item.quantity_units %></td>
 
