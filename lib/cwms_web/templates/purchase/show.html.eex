@@ -11,7 +11,7 @@
     <strong>Person in charge:</strong>
     <%= @purchase.person_in_charge.name %>
   </li>
-  
+
   <li>
     <strong>Address:</strong>
     <%= @purchase.address %>
@@ -20,6 +20,11 @@
   <li>
     <strong>Phone:</strong>
     <%= @purchase.phone %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @purchase.status %>
   </li>
 
 

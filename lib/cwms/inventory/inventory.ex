@@ -147,7 +147,7 @@ defmodule Cwms.Inventory do
   """
   def create_purchase(attrs \\ %{}) do
     %Purchase{}
-    |> Purchase.changeset(attrs)
+    |> Purchase.new_changeset(attrs)
     |> Repo.insert()
   end
 

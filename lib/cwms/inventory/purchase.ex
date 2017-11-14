@@ -9,6 +9,7 @@ defmodule Cwms.Inventory.Purchase do
     field :address, :string
     # field :person_in_charge, :string
     field :phone, :string
+    field :status, :string
 
     belongs_to :person_in_charge, Cwms.User, foreign_key: :pic_id
     belongs_to :requester, Cwms.User
@@ -24,5 +25,16 @@ defmodule Cwms.Inventory.Purchase do
     |> validate_required([:address, :phone])
     |> cast_assoc(:person_in_charge)
     |> cast_assoc(:requester)
+  end
+
+  def new_changeset(%Purchase{} = purchase, attrs) do
+    purchase
+    |> changeset(attrs)
+    |> set_status("new")
+  end
+
+  defp set_status(changeset, status) do
+    changeset
+    |> put_change(:status, status)
   end
 end
