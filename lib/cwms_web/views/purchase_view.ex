@@ -27,4 +27,12 @@ defmodule CwmsWeb.PurchaseView do
         "Complete"
     end
   end
+
+  def total_price(nil, _) do
+    0.00
+  end
+  
+  def total_price(quantity, price_cents) do
+    (quantity * price_cents / 100)
+  end
 end

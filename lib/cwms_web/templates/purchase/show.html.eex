@@ -26,6 +26,17 @@
     <strong>Status:</strong>
     <%= @purchase.status %>
   </li>
+
+  <li>
+    <strong>Items</strong>
+    <ul>
+      <%= for item <- @purchase.items do %>
+        <%= if item.model_id != nil do %>
+          <li><%= item.model_id %> - <%= item.quantity_requested %> @ RM<%= total_price(item.quantity_requested, item.unit_price_cents) %><div><small><%= item.description %></div></small></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </li>
   <span><%= link update_status_button_name(@purchase.status), to: purchase_path(@conn, :update, @purchase.id, status: new_status(@purchase.status)), method: :put, class: "btn btn-primary btn-xs pull-right" %></span>
 
 

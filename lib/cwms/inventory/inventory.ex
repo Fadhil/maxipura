@@ -73,6 +73,16 @@ defmodule Cwms.Inventory do
     |> Repo.update()
   end
 
+  def update_inventory_products(items) do
+    require IEx
+    IEx.pry()
+    for item <- items do
+      %Product{}
+      |> Product.changeset(item)
+      |> Repo.insert
+    end
+  end
+
   @doc """
   Deletes a Product.
 

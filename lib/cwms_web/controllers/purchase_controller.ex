@@ -57,6 +57,7 @@ defmodule CwmsWeb.PurchaseController do
     purchase = Inventory.get_purchase!(id) |> Repo.preload([:person_in_charge, :requester, :items])
     case status do
       "verified" ->
+         # Inventory.update_inventory_products(purchase.items)
          update_status(conn, purchase, "verified")
       "completed" ->
          update_status(conn, purchase, "completed")

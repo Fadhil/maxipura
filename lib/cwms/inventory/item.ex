@@ -8,6 +8,7 @@ defmodule Cwms.Inventory.Item do
   schema "purchase_items" do
     field :description, :string
     field :model_id, :string
+    field :name, :string
     field :quantity_requested, :integer
     field :quantity_units, :string
     field :unit_price, :float, virtual: true

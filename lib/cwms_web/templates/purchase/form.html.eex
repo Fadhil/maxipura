@@ -55,6 +55,13 @@
           <%= error_tag p, :model_id %>
         </div>
       </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <%= label p, :name, class: "control-label capitalize" %>
+          <%= text_input p, :name, class: "form-control" %>
+          <%= error_tag p, :name %>
+        </div>
+      </div>
       <div class="col-md-4">
         <div class="form-group">
           <%= label p, :description, class: "control-label capitalize" %>
